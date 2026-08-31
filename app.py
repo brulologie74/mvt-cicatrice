@@ -277,7 +277,7 @@ with tab3:
         metric = mesures[selection]    
         fig = build_deformation_bar_chart( df, metric)
         st.plotly_chart(    fig,   width='stretch')        
-     else
+    else
         st.warning("Le fichier historique.csv est introuvable.")
     # ========================================
     # COULEUR
