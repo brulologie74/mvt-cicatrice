@@ -266,17 +266,19 @@ with tab3:
     st.info("Outil d'aide à la mesure. Les résultats dépendent de la qualité des images et du protocole de prise de vue.")
     if os.path.exists("historique.csv"):
         df = pd.read_csv( "historique.csv" )
-    mesures = { "Δ Largeur X": "variation_width_x",
-                "Δ Hauteur X": "variation_height_x",
-                "Δ Largeur Y": "variation_width_y",
-                "Δ Hauteur Y": "variation_height_y",
-                "Δ Moyenne": "variation_m"
-              }    
-    selection = st.selectbox( "Indicateur", list(mesures.keys()))
-    metric = mesures[selection]    
-    fig = build_deformation_bar_chart( df, metric)
-    st.plotly_chart(    fig,   width='stretch')        
-        
+        st.write(f"Nombre de mesures : {len(df)}")
+        mesures = { "Δ Largeur X": "variation_width_x",
+                    "Δ Hauteur X": "variation_height_x",
+                    "Δ Largeur Y": "variation_width_y",
+                    "Δ Hauteur Y": "variation_height_y",
+                    "Δ Moyenne": "variation_m"
+                  }    
+        selection = st.selectbox( "Indicateur", list(mesures.keys()))
+        metric = mesures[selection]    
+        fig = build_deformation_bar_chart( df, metric)
+        st.plotly_chart(    fig,   width='stretch')        
+     else
+        st.warning("Le fichier historique.csv est introuvable.")
     # ========================================
     # COULEUR
     # ========================================
