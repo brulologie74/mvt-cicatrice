@@ -1,0 +1,10 @@
+patient_id,jour,r,g,b,date_mesure,photo_repos
+Patient10,J0,195.9,97.7,116.6,2026-08-14 15:14:17,P10_J1_couleur_mqIMG_0454.png
+Patient10,J09,203.6,128.2,158.0,2026-08-14 15:14:38,P10_J2_couleur_mq_IMG_0571.png
+Patient10,J18,207.1,124.8,132.0,2026-08-14 15:17:07,P10_J3_couleur_mq_IMG_0662.png
+Patient12,J0,202.1,115.1,138.9,2026-08-14 15:22:24,P12_J1_couleur_mqIMG_0531 2.png
+Patient12,J09,210.5,133.1,143.8,2026-08-14 15:22:51,P12_J2_couleur_mq_IMG_0626.png
+Patient12,J18,209.1,124.0,151.3,2026-08-14 15:23:14,P12_J3_couleur_mq_IMG_0704.png
+Patient11,J0,197.9,138.4,144.3,2026-08-14 15:27:25,IMG_0498 REPOS3_mq.png
+Patient11,J09,205.5,145.4,153.2,2026-08-14 15:50:13,P11_J2_couleur_mq_IMG_0608.png
+Patient11,J18,196.0,136.2,135.9,2026-08-14 15:51:35,P11_J3_couleur_mq_IMG_0681.png

@@ -1,0 +1,8 @@
+streamlit>=1.39.0
+opencv-python>=4.10.0.84
+numpy>=2.1.2
+pandas>=2.2.3
+Pillow>=10.4.0
+matplotlib>=3.9.2
+streamlit-drawable-canvas>=0.9.3
+streamlit_image_coordinates>=0.4.1
