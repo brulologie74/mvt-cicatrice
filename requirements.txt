@@ -6,3 +6,4 @@ Pillow>=10.4.0
 matplotlib>=3.9.2
 streamlit-drawable-canvas>=0.9.3
 streamlit_image_coordinates>=0.4.1
+plotly>=5.24.0
