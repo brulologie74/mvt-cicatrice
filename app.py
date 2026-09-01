@@ -34,6 +34,10 @@ from photo_processing import (
     draw_virtual_markers
 )
 
+from google_sheet import (
+    load_dt
+)
+
 # ======================================================
 # CONFIG
 # ======================================================
@@ -263,9 +267,11 @@ with tab3:
     # DEFORMATION
     # ========================================
     st.subheader("📐 Analyse de déformation")
-    st.info("Outil d'aide à la mesure. Les résultats dépendent de la qualité des images et du protocole de prise de vue.")
-    if os.path.exists("historique.csv"):
-        df = pd.read_csv( "historique.csv" )
+    st.info("Outil d'aide à la mesure. Les résultats dépendent de la qualité des images et du protocole de prise de vue. Test google sheet ")
+    
+    df = load_df("Historique_Deformation")
+    
+    #if os.path.exists("historique.csv"):   df = pd.read_csv( "historique.csv" )
     mesures = { "Δ Largeur X": "variation_width_x",
                 "Δ Hauteur X": "variation_height_x",
                 "Δ Largeur Y": "variation_width_y",
