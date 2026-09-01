@@ -1,5 +1,6 @@
-import pandas as pd
-import os
+from google_sheets import append_row
+from datetime import datetime
+
 from config import *
 from datetime import datetime
 
@@ -42,14 +43,48 @@ def save_measurements(
         "variation_height_y": variation_height_y,
         "variation_m": variation_m
     }
-    file_path = "historique.csv"
-
-    if os.path.exists(file_path):
-        df = pd.read_csv(file_path)
-        df = pd.concat( [df, pd.DataFrame([row])], ignore_index=True )
-    else:
-        df = pd.DataFrame([row])
-    df.to_csv(
-        file_path,
-        index=False
-    )
+    append_row( "Historique_Deformation",
+        [patient_id,
+        day,
+        repos[0],
+        repos[1],
+        tx[0],
+        tx[1],
+        ty[0],
+        ty[1],
+        datetime.now().strftime( "%Y-%m-%d %H:%M:%S" ),
+        repos_filename,
+        tx_filename,
+        ty_filename,
+        variation_width_x,
+        variation_height_x,
+        variation_width_y,
+        variation_height_y,
+        variation_m   ] )    
+        
+ def save_color_measurement( 
+    patient_id,
+    day,
+    r,
+    g,
+    b,
+    photo_repos
+):
+    row = {
+        "patient_id": patient_id,
+        "jour": day,
+        "r": r,
+        "g": g,
+        "b": b,
+        "date_mesure": datetime.now().strftime( "%Y-%m-%d %H:%M:%S" ),
+        "photo_repos": photo_repos
+    }
+    
+    append_row( "Historique_Couleur",
+        [patient_id,
+        day,
+        r,
+        g,
+        b,
+        datetime.now().strftime(  "%Y-%m-%d %H:%M:%S" ),
+        photo_repos] )

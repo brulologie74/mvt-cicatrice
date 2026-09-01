@@ -12,7 +12,10 @@ from streamlit_image_coordinates import streamlit_image_coordinates
 from PIL import Image
 
 from detection import detect_markers
-from storage import save_measurements
+from storage import (
+    save_measurements,
+    save_color_measurement
+    )
 
 from graphs import (
     build_rgb_population_graph,
