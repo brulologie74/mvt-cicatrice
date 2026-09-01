@@ -47,9 +47,9 @@ st.title("🩹 MVP Cicatrices")
 st.info( "Mesure de déformation de la peau à partir de 4 pastilles "
     "(outil d'aide à la mesure, sans diagnostic médical)." )
 #test start 
-try: df_test = load_df( "Historique_Deformation"  )
+try: 
+    df_test = load_df( "Historique_Deformation"  )
     st.success( f"Connexion Google Sheets OK - {len(df_test)} ligne(s)" )
-    st.dataframe( df_test.head() )
 except Exception as e:
     st.error(
         f"Erreur Google Sheets : {e}"
