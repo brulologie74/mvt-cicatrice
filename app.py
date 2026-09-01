@@ -271,7 +271,7 @@ with tab3:
 
     try: 
         df = load_df( "Historique_Deformation"  )
-        st.success( f"Connexion Google Sheets OK - {len(df_test)} ligne(s)" )
+        st.success( f"Connexion Google Sheets OK - {len(df)} ligne(s)" )
     except Exception as e:
         st.error( f"Erreur Google Sheets : {e}" )
     #if os.path.exists("historique.csv"):   df = pd.read_csv( "historique.csv" )
@@ -291,8 +291,9 @@ with tab3:
     # ========================================
     st.markdown("---")
     st.subheader("🎨 Colorimétrie")
-    if os.path.exists( "historique_couleur.csv" ):
-        df_color = pd.read_csv( "historique_couleur.csv" )
+     try: 
+        df_color = load_df( "Historique_Couleur"  )
+        st.success( f"Connexion Google Sheets OK - {len(df_color)} ligne(s)" )
         st.metric( "Mesures couleur",  len(df_color) )
         # ====================================
         # Pourcentages RGB
@@ -338,6 +339,9 @@ with tab3:
         st.dataframe(  ref_df,  width='stretch'  )
         fig = build_rgb_population_graph( df_color)
         st.plotly_chart( fig, width='stretch')
+        
+    except Exception as e:
+        st.error( f"Erreur Google Sheets : {e}" )        
 
 #**********************************************************************************          
 #**********************************************************************************
@@ -355,14 +359,14 @@ with tab4:
     st.subheader("📐 Historique Déformation")
     try: 
         df = load_df( "Historique_Deformation"  )
-        st.success( f"Connexion Google Sheets OK - {len(df_test)} ligne(s)" )
+        st.success( f"Connexion Google Sheets OK - {len(df)} ligne(s)" )
         st.dataframe( df, width='stretch' )
         ligne = st.selectbox( "Sélectionner une ligne à supprimer", options=df.index, key="delete_def"  )
-        if st.button( "🗑️ Supprimer la ligne Déformation" ):
-            df = df.drop( index=ligne  )
-            df.to_csv( "historique.csv", index=False  )
-            st.success( "Ligne supprimée." )
-            st.rerun()
+#        if st.button( "🗑️ Supprimer la ligne Déformation" ):
+#            df = df.drop( index=ligne  )
+#            df.to_csv( "historique.csv", index=False  )
+#            st.success( "Ligne supprimée." )
+#            st.rerun()
     except Exception as e:
         st.error( f"Erreur Google Sheets : {e}" )
  
@@ -372,21 +376,22 @@ with tab4:
     # ==========================================
     st.markdown("---")
     st.subheader("🎨 Historique Couleur")
-    if os.path.exists("historique_couleur.csv" ):
-        df_color = pd.read_csv("historique_couleur.csv" )
+    try: 
+        df_color = load_df( "Historique_Couleur"  )
+        st.success( f"Connexion Google Sheets OK - {len(df_color)} ligne(s)" )    
         st.dataframe( df_color,  width='content' )
         ligne_color = st.selectbox(
             "Sélectionner une ligne couleur à supprimer",
             options=df_color.index,
             key="delete_color"
         )
-        if st.button( "🗑️ Supprimer la ligne Couleur" ):
-            df_color = df_color.drop( index=ligne_color  )
-            df_color.to_csv( "historique_couleur.csv", index=False  )
-            st.success( "Ligne supprimée." )
-            st.rerun()
-    else:
-        st.info(  "historique_couleur.csv introuvable." )
+ #       if st.button( "🗑️ Supprimer la ligne Couleur" ):
+ #           df_color = df_color.drop( index=ligne_color  )
+ #           df_color.to_csv( "historique_couleur.csv", index=False  )
+ #           st.success( "Ligne supprimée." )
+ #           st.rerun()
+    except Exception as e:
+        st.error( f"Erreur Google Sheets : {e}" )
 #**********************************************************************************          
 #**********************************************************************************
 # Traitement photos - ajouter des pastilles
