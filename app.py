@@ -34,7 +34,7 @@ from photo_processing import (
     draw_virtual_markers
 )
 
-from google_sheet import (
+from google_sheets import (
     load_dt
 )
 
