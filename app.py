@@ -46,15 +46,7 @@ st.title("🩹 MVP Cicatrices")
 
 st.info( "Mesure de déformation de la peau à partir de 4 pastilles "
     "(outil d'aide à la mesure, sans diagnostic médical)." )
-#test start 
-try: 
-    df_test = load_df( "Historique_Deformation"  )
-    st.success( f"Connexion Google Sheets OK - {len(df_test)} ligne(s)" )
-except Exception as e:
-    st.error(
-        f"Erreur Google Sheets : {e}"
-    )
-# tets end
+
 st.header("Patient")
 patient_id = st.text_input( "Identifiant Patient", value="")
 jour = st.selectbox( "Jour",["J0","J9","J18"])
@@ -277,7 +269,11 @@ with tab3:
     st.subheader("📐 Analyse de déformation")
     st.info("Outil d'aide à la mesure. Les résultats dépendent de la qualité des images et du protocole de prise de vue. Test google sheet ")
 
-    
+    try: 
+        df = load_df( "Historique_Deformation"  )
+        st.success( f"Connexion Google Sheets OK - {len(df_test)} ligne(s)" )
+    except Exception as e:
+        st.error( f"Erreur Google Sheets : {e}" )
     #if os.path.exists("historique.csv"):   df = pd.read_csv( "historique.csv" )
     mesures = { "Δ Largeur X": "variation_width_x",
                 "Δ Hauteur X": "variation_height_x",
@@ -357,8 +353,9 @@ with tab4:
     # HISTORIQUE DEFORMATION
     # ==========================================
     st.subheader("📐 Historique Déformation")
-    if os.path.exists("historique.csv"):
-        df = pd.read_csv("historique.csv" )
+    try: 
+        df = load_df( "Historique_Deformation"  )
+        st.success( f"Connexion Google Sheets OK - {len(df_test)} ligne(s)" )
         st.dataframe( df, width='stretch' )
         ligne = st.selectbox( "Sélectionner une ligne à supprimer", options=df.index, key="delete_def"  )
         if st.button( "🗑️ Supprimer la ligne Déformation" ):
@@ -366,8 +363,9 @@ with tab4:
             df.to_csv( "historique.csv", index=False  )
             st.success( "Ligne supprimée." )
             st.rerun()
-    else:
-        st.info(  "historique.csv introuvable." )
+    except Exception as e:
+        st.error( f"Erreur Google Sheets : {e}" )
+ 
 
     # ==========================================
     # HISTORIQUE COULEUR
