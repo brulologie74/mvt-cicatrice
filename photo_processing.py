@@ -22,7 +22,7 @@ def apply_processing(
 def draw_virtual_markers(
     image,
     points,
-    radius=20
+    radius=60
 ):
     img = image.copy()
     for point in points:
