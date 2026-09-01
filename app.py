@@ -291,7 +291,7 @@ with tab3:
     # ========================================
     st.markdown("---")
     st.subheader("🎨 Colorimétrie")
-     try: 
+    try: 
         df_color = load_df( "Historique_Couleur"  )
         st.success( f"Connexion Google Sheets OK - {len(df_color)} ligne(s)" )
         st.metric( "Mesures couleur",  len(df_color) )
