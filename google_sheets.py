@@ -20,7 +20,7 @@ def load_sheet(name_sheet):
     sheet = client.open( name_sheet ).sheet1
     return sheet
     
-def load_dt( spreadsheet_name):
+def load_df( spreadsheet_name):
     sheet = load_sheet( spreadsheet_name )
     records = sheet.get_all_records()
     return pd.DataFrame(  records  )
