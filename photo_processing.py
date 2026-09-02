@@ -22,10 +22,9 @@ def apply_processing(
 def draw_virtual_markers(
     image,
     points,
-    radius=60
+    radius=100
 ):
     img = image.copy()
     for point in points:
         cv2.circle(  img, point, radius, (0,255,0), -1 )
-
     return img    
