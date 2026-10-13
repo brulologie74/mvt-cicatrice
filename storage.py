@@ -21,7 +21,7 @@ def save_measurements(
     variation_m = abs(( variation_width_x + variation_height_x + variation_width_y + variation_height_y) / 4)
 
     row = {
-        "record_id" : patient_id + day
+        "record_id" : patient_id + day,
         "date_mesure": datetime.now().strftime( "%Y-%m-%d %H:%M:%S" ),
         "patient_id": patient_id,
         "jour": day,
